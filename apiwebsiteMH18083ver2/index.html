@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Ejemplo web api</title>
+	<meta charset="utf-8"  />
+<LINK REL=StyleSheet HREF="estilo.css" TYPE="text/css" MEDIA=screen>
+<script src="codigo.js"></script>
+
+</head>
+
+<body >
+ <h1>… Ejemplo web api</h1>
+     <p>Marvin Sigfredo Martínez Hernández</p>
+     <p>MH18083</p>
+     <p>Grupo de trabajo: 03</p>
+     <p>Guia 61C</p>
+	 <p><button onclick="obtenerProductos();this.style.display='none';">Obtener Productos</button></p>
+	 <div id="formulario">
+	 	<form id="productForm">
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" required>
+        <br>
+
+        <label for="image">Imagen:</label>
+        <input type="text" name="image" id="image" required>
+        <br>
+
+        <label for="price">Precio:</label>
+        <input type="number" name="price" id="price" required>
+        <br>
+
+        <label for="category">Categoría:</label>
+        <select name="category" id="category" required>
+            <option value="electronicos">electronicos</option>
+            <option value="joyeria">Ropa</option>
+            <option value="damas">Hogar</option>
+            <option value="caballeros">Deportes</option>
+        </select>
+        <br>
+
+        <label for="description">Descripción:</label>
+        <textarea name="description" id="description" rows="4" required></textarea>
+        <br>
+
+        <button onclick="guardarDatos()">Guardar Producto</button>
+    </form>
+
+	 </div>
+	 <div id="listado" style="display:none;">
+	 <form name="filtroprods" id="filtroprods">
+	   Seleccione Categorias 
+	   <input type="checkbox" id="c1" value="c1" checked>Electronicos
+	 <input type="checkbox" id="c2" value="c2" checked>Joyería
+   <input type="checkbox" id="c3" value="c3" checked>Ropa Caballero
+   <input type="checkbox" id="c4" value="c4" checked>Ropa Dama
+   <ol><li>Click en la imagen para Acercamiento</li>
+   <li>Click en precio para ordenar Asc o Desc</li></ol>
+     <table id="tabla" border="1">
+	 <thead>
+	 <tr>
+	 	<th>id</th><th>foto</th><th  id="price">price</th>
+	 <th>title</th><th>description</th><th>category</th>
+
+	 <th>Acciones</th>
+
+	 </tr>
+	 </thead>
+	 <tbody id="tbody"></tbody>
+	 </table>
+	 </form>
+	 </div>
+	
+     
+</body>
+</html>
