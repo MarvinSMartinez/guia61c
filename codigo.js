@@ -1,7 +1,7 @@
 //Marvin Sigfredo Martínez Hernández
 //MH18083
 //Grupo 03
-var fila="<tr><td class='id'></td><td class='foto'></td><td class='price'></td><td class='title'></td><td class='description'></td><td class='category'></td></tr>";
+var fila="<tr><td class='id'></td><td class='foto'></td><td class='price'></td><td class='title'></td><td class='description'></td><td class='category'></td><td class='eliminar'></td></tr>";
 	 var productos=null;
   function codigoCat(catstr) {
 	var code="null";
@@ -34,7 +34,8 @@ var fila="<tr><td class='id'></td><td class='foto'></td><td class='price'></td><
 	  descriptions=document.getElementsByClassName("description");
 	  categories=document.getElementsByClassName("category");   
 	  fotos=document.getElementsByClassName("foto");   
-	  prices=document.getElementsByClassName("price");  
+	  prices=document.getElementsByClassName("price"); 
+	  Accion = document.getElementsByClassName("eliminar"); 
 
 
 	  if(orden===0) {orden=-1;precio.innerHTML="Precio"}
@@ -56,13 +57,8 @@ var fila="<tr><td class='id'></td><td class='foto'></td><td class='price'></td><
 		prices[nfila].innerHTML="$"+productos[nfila].price;
 		fotos[nfila].innerHTML="<img src='"+productos[nfila].image+"'>";
 		fotos[nfila].firstChild.setAttribute("onclick","window.open('"+productos[nfila].image+"');" );
-
-		var eliminarBtn = document.createElement("button");
-        eliminarBtn.innerHTML = "Eliminar";
-        eliminarBtn.onclick = function () {
-            eliminarProd(productos[nfila].id);
-        };
-        tr.appendChild(eliminarBtn);
+		Accion[nfila].innerHTML= "<button>Eliminar</button>"
+		Accion[nfila].firstChild.setAttribute("onclick","eliminarProd('"+productos[nfila].id+"');");
 		}
 
 	}
@@ -129,9 +125,10 @@ function guardarDatos(){
 
 }
 
-function eliminarProd(id){
+var idp
+function eliminarProd(idp){
 	var delresult;
-	fetch('https://api-generator.retool.com/n3BzSM/productos/${id}',
+	fetch('https://api-generator.retool.com/n3BzSM/productos/'+idp,
 	{ method:"DELETE"})
 	.then(response=>response.json())
 	.then(data=>delresult=data);
